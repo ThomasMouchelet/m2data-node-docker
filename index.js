@@ -82,6 +82,10 @@ app.delete('/posts/:id', function(req, res){
     res.send('You have reached the delete route');
 })
 
+app.get('/auth/signin', function(req, res){
+    res.send('This is the sign in page');
+})
+
 app.listen(PORT, function(){
     console.log(`Example app listening on port ${PORT}!`);
 })
