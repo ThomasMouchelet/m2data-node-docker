@@ -48,3 +48,8 @@ CREATE TABLE post (id INT PRIMARY KEY NOT NULL, title VARCHAR(100), content VARC
 ```bash
     docker-compose up -d
 ``````
+
+
+
+git config --global user.email mouchelet.thomas@gmail
+git config --global user.name "thomasM"
