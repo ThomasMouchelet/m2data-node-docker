@@ -25,14 +25,6 @@ app.use(function(req, res, next){
     next();
 })
 
-const postsList = [
-    {
-        id: 1,
-        title: 'Post 1',
-        content: 'This is the first post'
-    }
-]
-
 app.get('/', function(req, res){
     res.send('Hello World');
 })
