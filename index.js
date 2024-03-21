@@ -3,8 +3,10 @@ const app = express();
 const PORT = process.env.APP_PORT || 8000;
 const mysql = require('mysql')
 require('dotenv').config();
+const cors = require('cors');
 
 app.use(express.json());
+app.use(cors());
 
 const con = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -70,17 +72,14 @@ app.post('/posts', function(req, res){
 
 // Delte one posts
 app.delete('/posts/:id', function(req, res){
-    const {id} = req.params;
+    const { id } = req.params;
+    console.log("Delete element : ", id);
 
-    const post = postsList.find(function(post){
-        return post.id === parseInt(id);
-    })
-
-    const index = postsList.indexOf(post);
-
-    postsList.splice(index, 1);
-
-    res.send('You have reached the delete route');
+    const sql = "DELETE FROM post WHERE id =?";
+    con.query(sql, [id], function (err, result) {
+        if (err) throw err;
+        res.send(result);
+    });
 })
 
 app.get('/auth/signin', function(req, res){
